@@ -69,9 +69,17 @@ class ViewController: UIViewController {
             score = 0
         }
         
+        UIView.animate(withDuration: 1, delay: 0, options: [], animations: {
+            sender.alpha = 0
+        }) { finished in sender.imageView?.isHidden = false }
+        
         let ac = UIAlertController(title: title, message: "Your score is \(score).", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        
+        sender.alpha = 1
+        sender.imageView?.isHidden = true
         present(ac, animated: true)
+
     }
     @objc func scoreSum() {
          let scoreAlert = UIAlertController(title: "Score", message: nil, preferredStyle: .actionSheet)
